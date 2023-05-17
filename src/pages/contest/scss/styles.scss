@@ -1,0 +1,10 @@
+@import 'variable.scss';
+
+html{
+  font-size : $_rem;
+}
+
+body{
+  height: 1vh;
+  font-family : $_default_font;
+}

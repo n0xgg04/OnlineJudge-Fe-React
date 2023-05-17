@@ -1,0 +1,31 @@
+{
+  "problems": [
+    {
+      "name": "A",
+      "id": 1,
+      "data" : {
+        "problemName": "Covid đang tới",
+        "maxScores": 100,
+        "author": "admin"
+      }
+    },
+    {
+      "name": "B",
+      "id": 2,
+      "data" : {
+        "problemName": "Bài khó của anh Huy",
+        "maxScores": 100,
+        "author": "admin"
+      }
+    },
+    {
+      "name": "C",
+      "id": 3,
+      "data" : {
+        "problemName": "Phương Thảo và chiếc tàu lượn",
+        "maxScores": 100,
+        "author": "admin"
+      }
+    }
+  ]
+}

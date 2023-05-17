@@ -1,0 +1,41 @@
+@import 'variable';
+@import 'animation';
+
+.main-container {
+  color : #ffffff;
+  font-size: 0.6rem;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+  animation: animateBG 10s ease infinite;
+  background: $_bg_color;
+  background-size: 300% 300%;
+}
+
+@mixin animation-in-box($top,$left,$scale : false){
+  position: fixed;
+  top: $top;
+  left: $left;
+  z-index: -1;
+  @if $scale == false {
+    animation: rotate-infinity 15s ease-in infinite;
+  }
+  @else{
+    animation: zoomInOut-infinity 15s ease-in infinite;
+  }
+}
+
+.anim-icon-poly_st{
+  @include animation-in-box(30%,20%)
+}
+
+.anim-icon-plus{
+  @include animation-in-box(70%,80%);
+}
+
+.anim-icon-round{
+  @include animation-in-box(45%,90%,true)
+}

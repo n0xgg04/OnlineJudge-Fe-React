@@ -1,0 +1,194 @@
+@import '../../navigation/scss/variable';
+$_heading-box-height: 90px;
+$max-height-box : 82vh;
+.easy{
+  padding: 4px 15px;
+  background: green;
+  border-radius: 15px;
+  font-family: inherit;
+  font-size: 0.6rem;
+}
+
+.glassBox{
+  /* From https://css.glass */
+  background: rgba(239, 229, 244, 0.13);
+  border-radius: 16px;
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(70px);
+  -webkit-backdrop-filter: blur(7.2px);
+  border: 1px solid rgba(239, 229, 244, 0.1);
+}
+
+.mainBox{
+  width: 99%;
+  height : 99%;
+  margin-top: 3%;
+  background : rgba(255, 255, 255, 0.01);
+  border-radius: 10px;
+  box-sizing: inherit;
+
+  .mainBox-container{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    height: max-content;
+  }
+
+  .iconTask{
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    box-shadow: rgba(0, 0, 0, 0.4) 0px 0px 10px;
+  }
+
+  .mainBox-container_left-heading--problem{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 10px;
+  }
+
+  .mainBox-container_left-heading--pob{
+    display: flex;
+    flex-direction: row;
+    gap: 10px;
+    justify-content: flex-end;
+  }
+
+  .starPoint{
+    color : #84a2ee;
+    font-size: 1.2rem;
+  }
+
+  .mainBox-container_left-heading--point{
+    display: flex;
+    align-items: center;
+    font-size: 0.8rem;
+    color: $color_user_point;
+    gap: 2px;
+    &::after{
+      content:' điểm'
+    }
+  }
+
+  .mainBox-container_left-problem{
+    font-size: 0.70rem;
+    height: 700px;
+    box-sizing: border-box;
+    margin: 2px 0px;
+    overflow-y: scroll;
+
+    .mainBox-container_left-problem--container{
+      margin: 0 25px;
+    }
+  }
+
+  .mainBox-container_left{
+    width: 48vw;
+    max-height: $max-height-box;
+    display: flex;
+    flex-direction: column;
+    box-sizing: border-box;
+  }
+
+  .mainBox-container_right{
+    width: 48vw;
+    max-height: $max-height-box;
+    overflow-y: hidden;
+    box-sizing: border-box;
+  }
+
+  .monaco-editor{
+    background: transparent !important;
+  }
+
+  .codeEditor {
+    background-color: transparent !important;
+  }
+
+  .mainBox-container_right-code-sub{
+    height: 220px;
+    background : #1e1e1e;
+    box-sizing: border-box;
+  }
+
+  .mainBox-container_right-head{
+    max-height: $_heading-box-height;
+    display: flex;
+    box-sizing: border-box;
+    flex-direction: row;
+    justify-content: space-between;
+    padding : 20px 20px;
+
+    .mainBox-container_right-head_uploadButton {
+      height: 35px;
+      width: 90px;
+      color: $color_user_point;
+      background: transparent;
+      border: $color_user_point 2px solid;
+      border-radius: 10px;
+      cursor: pointer;
+
+      span {
+        text-align: center;
+        font-weight: 600;
+      }
+    }
+
+
+    .mainBox-container_right-head__chooselangSelect{
+      height: 30px;
+      width: 85px;
+      background: transparent;
+      border: $color_user_point 2px solid;
+      border-radius: 10px;
+      color : $color_user_point;
+      display: flex;
+      align-items: center;
+      cursor : pointer;
+    }
+  }
+
+  .mainBox-container_left-heading{
+    padding: 0 15px;
+    height: $_heading-box-height;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    border-radius: 15px;
+  }
+}
+
+.mainBox-all{
+  width: 100vw;
+  height : 100vh;
+  box-sizing: border-box;
+  margin-top: 1%;
+  display: grid;
+  place-items: center;
+}
+
+.mainBox-container_right-code{
+  display: grid;
+  grid-template-rows: auto 70px;
+}
+
+.mainBox-container_right-code-sub-left{
+  width : 50%;
+  background : transparent;
+  border-radius: 5px;
+  margin: 0 5px;
+}
+
+.mainBox-container_right-code-sub-right{
+  display: flex;
+  align-items: center;
+}
+
+.mainBox-container_right-code-sub{
+  display : flex;
+  flex-direction: row;
+  justify-content: space-between;
+  box-sizing: border-box;
+}

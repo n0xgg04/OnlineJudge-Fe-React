@@ -1,0 +1,17 @@
+@mixin glassButton{
+  width: 100%;
+  text-align: center;
+  padding: 20px;
+  background: hsla(0,0%,100%,.2);
+  border: 2px solid hsla(0,0%,100%,.1);
+  border-radius: 10px;
+  margin-top: 20px;
+  cursor: pointer;
+  transition: background-color .15s ease;
+  font-weight: 400;
+}
+
+@mixin glassColor($blurBG:.2, $blurBorder:.1, $borderSize: 2px){
+  background: hsla(0,0%,100%,$blurBG);
+  border: $borderSize solid hsla(0,0%,100%,$blurBorder);
+}
