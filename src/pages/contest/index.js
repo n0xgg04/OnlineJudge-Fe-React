@@ -4,7 +4,7 @@ import axios from "axios";
 
 import MainBox from "../../components/main-box"
 import NavigationBar from '../../components/navigation/index.js'
-import Body from '../../components/BodyPage'
+import Body from '../../layouts/BodyPage'
 import Loading from '../../components/loading'
 import './scss/styles.scss'
 

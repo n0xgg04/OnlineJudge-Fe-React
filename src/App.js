@@ -1,4 +1,4 @@
-import Router from '../src/routes/index'
+import PageRouter from '../src/routes/index'
 import React from 'react'
 
 class App extends React.Component{
@@ -14,7 +14,7 @@ class App extends React.Component{
   render(){
         return (
             <>
-                <Router/>
+                <PageRouter/>
             </>
         )
     }

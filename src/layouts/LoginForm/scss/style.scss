@@ -11,6 +11,9 @@
   width: 100%;
   height: 100%;
   display: grid;
+  position: fixed;
+  top: 0;
+  left: 0;
   place-items: center;
 }
 .loginBox-formBox_form-saveSSCheckbox{
@@ -43,6 +46,7 @@
     flex-direction: column;
     align-items: center;
     gap: 20px;
+    position: relative;
   }
 
   .loginBox-formBox_form-username{
@@ -103,7 +107,7 @@
   margin-top: 3%;
 
   h1{
-    font-size: 1.2rem;
+    font-size: 1rem;
     margin: 0;
     color: rgba(228,223,224,1)
   }
@@ -237,4 +241,21 @@
 
 .inputForm--shake{
   animation: .3s shake linear;
+}
+
+.loginBox-formBox_form-forgetPassword {
+  position: relative;
+  width: 100px;
+  height: 30px;
+  display: flex;
+  justify-content: center;
+
+  .loginBox-formBox_form-link_forget {
+    color: #d6dae0;
+    font-size: 0.55rem;
+    text-decoration: none;
+    position: absolute;
+    top: -10px;
+    display: inline-block;
+  }
 }
