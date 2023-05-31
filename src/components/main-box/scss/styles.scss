@@ -2,11 +2,11 @@
 $_heading-box-height: 90px;
 $max-height-box : 82vh;
 .easy{
-  padding: 4px 15px;
+  padding: 2px 15px;
   background: green;
   border-radius: 15px;
   font-family: inherit;
-  font-size: 0.6rem;
+  font-size: 0.55rem;
 }
 
 .glassBox{
@@ -19,19 +19,13 @@ $max-height-box : 82vh;
   border: 1px solid rgba(239, 229, 244, 0.1);
 }
 
-.mainBox{
-  width: 99%;
-  height : 99%;
-  margin-top: 3%;
-  background : rgba(255, 255, 255, 0.01);
-  border-radius: 10px;
-  box-sizing: inherit;
 
-  .mainBox-container{
-    display: flex;
-    flex-direction: row;
-    justify-content: space-evenly;
-    height: max-content;
+  .resize-handle{
+    width: 10px;
+    height: 100%;
+    background: rgba(176, 47, 47, 0.01);
+    cursor: col-resize;
+    grid-area: resize;
   }
 
   .iconTask{
@@ -46,6 +40,17 @@ $max-height-box : 82vh;
     flex-direction: row;
     align-items: center;
     gap: 10px;
+
+    h1{
+        font-size: 1.2rem;
+    }
+
+  }
+
+  .timeLimit, .memoryLimit{
+    font-size: 1.1rem;
+    color: #fff;
+    margin-right: 3px;
   }
 
   .mainBox-container_left-heading--pob{
@@ -53,11 +58,21 @@ $max-height-box : 82vh;
     flex-direction: row;
     gap: 10px;
     justify-content: flex-end;
+    align-items: center;
   }
 
   .starPoint{
     color : #84a2ee;
     font-size: 1.2rem;
+  }
+
+  .mainBox-container_left-heading--timelimit,.mainBox-container_left-heading--memorylimit{
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+    align-items: center;
+    color: #fff;
+    margin-right: 2px;
   }
 
   .mainBox-container_left-heading--point{
@@ -77,6 +92,7 @@ $max-height-box : 82vh;
     box-sizing: border-box;
     margin: 2px 0px;
     overflow-y: scroll;
+    scrollbar-width: thin;
 
     .mainBox-container_left-problem--container{
       margin: 0 25px;
@@ -84,18 +100,20 @@ $max-height-box : 82vh;
   }
 
   .mainBox-container_left{
-    width: 48vw;
-    max-height: $max-height-box;
+    max-height: calc(100vh - 100px);
     display: flex;
     flex-direction: column;
     box-sizing: border-box;
+    grid-area: left;
+    user-select: none;
   }
 
   .mainBox-container_right{
-    width: 48vw;
-    max-height: $max-height-box;
+    max-height: calc(100vh - 100px);
     overflow-y: hidden;
     box-sizing: border-box;
+    grid-area: right;
+    min-width: 300px;
   }
 
   .monaco-editor{
@@ -158,15 +176,13 @@ $max-height-box : 82vh;
     align-items: center;
     border-radius: 15px;
   }
-}
 
 .mainBox-all{
   width: 100vw;
-  height : 100vh;
   box-sizing: border-box;
-  margin-top: 1%;
-  display: grid;
-  place-items: center;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
 }
 
 .mainBox-container_right-code{
@@ -191,4 +207,11 @@ $max-height-box : 82vh;
   flex-direction: row;
   justify-content: space-between;
   box-sizing: border-box;
+}
+
+//write responsive
+@media screen and (max-width: 600px){
+  .mainBox-container{
+    grid-template-columns: 1fr;
+  }
 }

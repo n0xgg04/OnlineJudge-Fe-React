@@ -1,0 +1,144 @@
+@charset "UTF-8";
+@import url("https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;600&family=Poppins:wght@300;400;600;700;800&display=swap");
+.navBar {
+  width: 100%;
+  height: 70px;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  -webkit-user-select: none; /* Chrome, Safari, Opera */
+  -moz-user-select: none; /* Firefox */
+  -ms-user-select: none; /* Internet Explorer/Edge */
+  user-select: none; /* Generic syntax */
+}
+
+.navBar-content {
+  position: fixed;
+  top: 20px;
+  z-index: 1;
+  display: grid;
+  box-sizing: border-box;
+  grid-template-columns: 20% auto 20%;
+  box-shadow: rgba(0, 0, 0, 0.2) 0px 0px 10px;
+  width: 90%;
+  border-radius: 12px;
+  min-height: 65px;
+}
+.navBar-content::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 90%;
+  min-height: 65px;
+  filter: blur(10px);
+  z-index: -1;
+}
+.navBar-content .problem_done {
+  border: darkgreen 1.5px solid !important;
+}
+.navBar-content .navBar-info {
+  display: flex;
+  flex-direction: row;
+  gap: 10px;
+  align-items: center;
+  margin-left: 5%;
+}
+.navBar-content .navBar-info::after {
+  margin-left: 5px;
+  content: "";
+  width: 2px;
+  height: 40px;
+  background: #c0c0c0;
+}
+.navBar-content .navBar-info .navBar-info_user--name {
+  font-family: "Poppins", sans-serif;
+  font-size: 0.6rem;
+  color: #84a2ee;
+  font-weight: bold;
+  line-height: 1.6;
+}
+.navBar-content .navBar-info .navBar-info_user--point {
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: #c0c0c0;
+  display: flex;
+  align-items: center;
+  gap: 2px;
+}
+.navBar-content .navBar-info .navBar-info_user--point::after {
+  content: "điểm";
+  font-size: 0.6rem;
+}
+.navBar-content .navBar-info .navBar-info_avatar {
+  height: 35px;
+  width: 35px;
+  border-radius: 50%;
+  box-shadow: 0 2px 4px 0 rgba(158, 158, 158, 0), 0 2px 15px 0 rgba(0, 0, 0, 0.06);
+}
+.navBar-content .navBar-info .navBar-info_user {
+  display: flex;
+  flex-direction: column;
+}
+.navBar-content .navBar-clock {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+  align-self: center;
+  height: 90%;
+}
+.navBar-content .navBar-clock .navBar-clock_box {
+  background: transparent;
+  border-radius: 15px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 100px;
+  height: 100%;
+  margin-right: 10%;
+}
+.navBar-content .navBar-clock .navBar-clock_box span {
+  font-size: 0.7rem;
+  color: #c0c0c0;
+  font-family: "Orbitron", sans-serif;
+}
+.navBar-content .navBar-button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 10px;
+  padding: 0 20px;
+}
+.navBar-content .navBar-button .actived_button {
+  background: #4230aa;
+  border: #4230aa 2px solid !important;
+  color: #ffffff;
+}
+.navBar-content .navBar-button .actived_button-text {
+  color: #ffffff !important;
+}
+.navBar-content .navBar-button .actived_button-text:hover, .navBar-content .navBar-button .actived_button-text:active {
+  color: #6d5dcb !important;
+}
+.navBar-content .navBar-button .navBar-content_button {
+  min-height: 35px;
+  max-height: 40px;
+  min-width: 35px;
+  max-width: 100px;
+  border: #4230aa 1.5px solid;
+  border-radius: 10px;
+  display: grid;
+  place-items: center;
+  cursor: pointer;
+}
+.navBar-content .navBar-button .navBar-content_button:hover {
+  border: #6d5dcb 1.5px solid;
+}
+.navBar-content .navBar-button .navBar-content_button span {
+  font-size: 0.7rem;
+  color: #4230aa;
+  font-family: "Poppins", sans-serif;
+}
+
+/*# sourceMappingURL=contestNavBar.css.map */

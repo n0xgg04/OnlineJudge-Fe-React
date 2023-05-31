@@ -2,9 +2,59 @@
 
 html{
   font-size : $_rem;
+  scroll-behavior: smooth;
 }
 
 body{
-  height: 1vh;
+  min-height: 1vh;
   font-family : $_default_font;
+}
+
+body::-webkit-scrollbar {
+  width: 10px; /* Width of the scrollbar */
+}
+
+body::-webkit-scrollbar-track {
+  background-color: transparent; /* Set the track background to transparent */
+}
+
+body::-webkit-scrollbar-thumb {
+  background-color: #888888; /* Color of the thumb */
+}
+
+body::-webkit-scrollbar-thumb:hover {
+  background-color: #555555; /* Color of the thumb on hover */
+}
+
+
+.contestLayout{
+  display: grid;
+  grid-template-areas : "nav nav nav"
+                        "left resize right";
+  grid-template-rows: 100px 1fr;
+  grid-template-columns: 1fr auto 1fr;
+  justify-content: space-around;
+}
+
+@media screen and (max-width: 600px){
+    .contestLayout{
+        grid-template-areas : "nav nav nav"
+                            "left left left"
+                            "resize resize resize"
+                            "right right right";
+        grid-template-rows: 100px 1fr 10px 1fr;
+        grid-template-columns: 1fr;
+    }
+
+  .scroll-btn{
+    transition : all 0.3s ease-in-out;
+    display: flex;
+  }
+}
+
+@media screen and (min-width: 600px){
+    .scroll-btn{
+      transition : all 0.3s ease-in-out;
+      display: none;
+    }
 }

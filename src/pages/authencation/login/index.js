@@ -1,6 +1,5 @@
 import Body from '../../../layouts/BodyPage'
 import LoginForm from '../../../layouts/LoginForm'
-import AuthencationNavigationBar from '../../../components/navigation/AuthencationNavigationBar'
 import {Helmet} from "react-helmet";
 
 export default function LoginPage(){

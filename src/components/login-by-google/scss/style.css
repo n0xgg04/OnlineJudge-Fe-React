@@ -1,0 +1,10 @@
+.google-login__button {
+  border-radius: 10px !important;
+  box-sizing: border-box !important;
+  padding: 0 !important;
+}
+.google-login__button div {
+  padding: 5px !important;
+}
+
+/*# sourceMappingURL=style.css.map */

@@ -130,7 +130,7 @@
 }
 
 .loginBox-formBox_form-btn{
-  height: 30px;
+  height: 20px;
   width: 100%;
   @include glassButton;
   color : #ffffff;
@@ -138,7 +138,8 @@
   justify-content: center;
   align-items: center;
   font-weight: 500;
-  font-size: 0.7rem;
+  font-size: 0.65rem;
+  margin-top: 0;
 
   &:hover{
     background: hsla(0,0%,100%,.3);
@@ -246,7 +247,7 @@
 .loginBox-formBox_form-forgetPassword {
   position: relative;
   width: 100px;
-  height: 30px;
+  height: 10px;
   display: flex;
   justify-content: center;
 
@@ -256,6 +257,37 @@
     text-decoration: none;
     position: absolute;
     top: -10px;
-    display: inline-block;
+    display: none;
+  }
+}
+
+.loginBox-formBox_form-submitButton{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+    justify-content: center;
+
+  .login-or{
+    margin: 5px 0;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+
+    span{
+        color: #d6dae0;
+        font-size: 0.55rem;
+        width: 100%;
+        text-align: center;
+
+      &:before, &:after{
+        content: "";
+        display: inline-block;
+        width: 20%;
+        height: 1px;
+        background: #d6dae0;
+        vertical-align: middle;
+        margin: 0 5px;
+      }
+    }
   }
 }

@@ -1,0 +1,208 @@
+@charset "UTF-8";
+.easy {
+  padding: 2px 15px;
+  background: green;
+  border-radius: 15px;
+  font-family: inherit;
+  font-size: 0.55rem;
+}
+
+.glassBox {
+  /* From https://css.glass */
+  background: rgba(239, 229, 244, 0.13);
+  border-radius: 16px;
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(70px);
+  -webkit-backdrop-filter: blur(7.2px);
+  border: 1px solid rgba(239, 229, 244, 0.1);
+}
+
+.resize-handle {
+  width: 10px;
+  height: 100%;
+  background: rgba(176, 47, 47, 0.01);
+  cursor: col-resize;
+  grid-area: resize;
+}
+
+.iconTask {
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  box-shadow: rgba(0, 0, 0, 0.4) 0px 0px 10px;
+}
+
+.mainBox-container_left-heading--problem {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 10px;
+}
+.mainBox-container_left-heading--problem h1 {
+  font-size: 1.2rem;
+}
+
+.timeLimit, .memoryLimit {
+  font-size: 1.1rem;
+  color: #fff;
+  margin-right: 3px;
+}
+
+.mainBox-container_left-heading--pob {
+  display: flex;
+  flex-direction: row;
+  gap: 10px;
+  justify-content: flex-end;
+  align-items: center;
+}
+
+.starPoint {
+  color: #84a2ee;
+  font-size: 1.2rem;
+}
+
+.mainBox-container_left-heading--timelimit, .mainBox-container_left-heading--memorylimit {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+  align-items: center;
+  color: #fff;
+  margin-right: 2px;
+}
+
+.mainBox-container_left-heading--point {
+  display: flex;
+  align-items: center;
+  font-size: 0.8rem;
+  color: #c0c0c0;
+  gap: 2px;
+}
+.mainBox-container_left-heading--point::after {
+  content: " điểm";
+}
+
+.mainBox-container_left-problem {
+  font-size: 0.7rem;
+  height: 700px;
+  box-sizing: border-box;
+  margin: 2px 0px;
+  overflow-y: scroll;
+  scrollbar-width: thin;
+}
+.mainBox-container_left-problem .mainBox-container_left-problem--container {
+  margin: 0 25px;
+}
+
+.mainBox-container_left {
+  max-height: calc(100vh - 100px);
+  display: flex;
+  flex-direction: column;
+  box-sizing: border-box;
+  grid-area: left;
+  user-select: none;
+}
+
+.mainBox-container_right {
+  max-height: calc(100vh - 100px);
+  overflow-y: hidden;
+  box-sizing: border-box;
+  grid-area: right;
+  min-width: 300px;
+}
+
+.monaco-editor {
+  background: transparent !important;
+}
+
+.codeEditor {
+  background-color: transparent !important;
+}
+
+.mainBox-container_right-code-sub {
+  height: 220px;
+  background: #1e1e1e;
+  box-sizing: border-box;
+}
+
+.mainBox-container_right-head {
+  max-height: 90px;
+  display: flex;
+  box-sizing: border-box;
+  flex-direction: row;
+  justify-content: space-between;
+  padding: 20px 20px;
+}
+.mainBox-container_right-head .mainBox-container_right-head_uploadButton {
+  height: 35px;
+  width: 90px;
+  color: #c0c0c0;
+  background: transparent;
+  border: #c0c0c0 2px solid;
+  border-radius: 10px;
+  cursor: pointer;
+}
+.mainBox-container_right-head .mainBox-container_right-head_uploadButton span {
+  text-align: center;
+  font-weight: 600;
+}
+.mainBox-container_right-head .mainBox-container_right-head__chooselangSelect {
+  height: 30px;
+  width: 85px;
+  background: transparent;
+  border: #c0c0c0 2px solid;
+  border-radius: 10px;
+  color: #c0c0c0;
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+}
+
+.mainBox-container_left-heading {
+  padding: 0 15px;
+  height: 90px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  border-radius: 15px;
+}
+
+.mainBox-all {
+  width: 100vw;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+
+.mainBox-container_right-code {
+  display: grid;
+  grid-template-rows: auto 70px;
+}
+
+.mainBox-container_right-code-sub-left {
+  width: 50%;
+  background: transparent;
+  border-radius: 5px;
+  margin: 0 5px;
+}
+
+.mainBox-container_right-code-sub-right {
+  display: flex;
+  align-items: center;
+}
+
+.mainBox-container_right-code-sub {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  box-sizing: border-box;
+}
+
+@media screen and (max-width: 600px) {
+  .mainBox-container {
+    grid-template-columns: 1fr;
+  }
+}
+
+/*# sourceMappingURL=styles.css.map */

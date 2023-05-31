@@ -1,0 +1,301 @@
+@import url("https://fonts.googleapis.com/css2?family=Noto+Sans&family=Orbitron:wght@400;500;600&family=Poppins:wght@300;400;600;700;800&family=Roboto:wght@300&family=Wix+Madefor+Display&display=swap");
+@keyframes shake {
+  0% {
+    transform: translateX(0);
+  }
+  25% {
+    transform: translateX(10px);
+  }
+  50% {
+    transform: translateX(-10px);
+  }
+  75% {
+    transform: translateX(10px);
+  }
+  100% {
+    transform: translateX(0);
+  }
+}
+* {
+  font-family: "Noto Sans", sans-serif;
+  font-weight: 400;
+}
+
+.loginBox {
+  width: 100%;
+  height: 100%;
+  display: grid;
+  position: fixed;
+  top: 0;
+  left: 0;
+  place-items: center;
+}
+
+.loginBox-formBox_form-saveSSCheckbox {
+  padding: 0;
+  margin: 0 10px;
+}
+
+.loginBox-formBox_form-saveSession {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-right: 4px;
+}
+
+.loginBox-formBox {
+  height: 65%;
+  width: 20%;
+  min-width: 340px;
+  min-height: 450px;
+  background: #6d5dcb;
+  border-radius: 15px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.loginBox-formBox .loginBox-formBox_form {
+  margin-top: 5%;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+  position: relative;
+}
+.loginBox-formBox .loginBox-formBox_form-username {
+  width: 100%;
+}
+.loginBox-formBox .loginBox-formBox_input {
+  width: 65%;
+  height: 30px;
+  border-radius: 10px;
+  background: hsla(0, 0%, 100%, 0.2);
+  border: 1px solid hsla(0, 0%, 100%, 0.1);
+  color: #ffffff;
+  padding: 5px 10px;
+}
+
+.glassBox {
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 16px;
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(5px);
+  -webkit-backdrop-filter: blur(5px);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+.inputForm {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  box-sizing: content-box;
+}
+
+.form-did-floating-label {
+  position: absolute;
+  top: 4px;
+  left: 18%;
+  pointer-events: none;
+  color: rgba(255, 255, 255, 0.8);
+  background: transparent;
+  transition: all 0.2s ease-out;
+  -moz-transition: all 0.2s ease-out;
+  -webkit-transition: all 0.2s ease-out;
+  font-size: 0.6rem;
+  transform: translateY(50%);
+}
+
+.loginBox-formBox_heading {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin-top: 3%;
+}
+.loginBox-formBox_heading h1 {
+  font-size: 1rem;
+  margin: 0;
+  color: rgb(228, 223, 224);
+}
+
+.loginBox-formBox_heading--logo {
+  height: 60px;
+  width: 60px;
+}
+
+.loginBox-formBox_form-submitButton {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.loginBox-formBox_form-saveSession {
+  align-self: flex-start;
+  margin-left: 15%;
+}
+
+.loginBox-formBox_form-btn {
+  height: 20px;
+  width: 100%;
+  width: 100%;
+  text-align: center;
+  padding: 20px;
+  background: hsla(0, 0%, 100%, 0.2);
+  border: 2px solid hsla(0, 0%, 100%, 0.1);
+  border-radius: 10px;
+  margin-top: 20px;
+  cursor: pointer;
+  transition: background-color 0.15s ease;
+  font-weight: 400;
+  color: #ffffff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-weight: 500;
+  font-size: 0.65rem;
+  margin-top: 0;
+}
+.loginBox-formBox_form-btn:hover {
+  background: hsla(0, 0%, 100%, 0.3);
+}
+
+.loginBox-formBox_heading {
+  font-size: 0.8rem;
+  height: 30%;
+  font-weight: 400px !important;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+.inputCeil::placeholder {
+  color: #d6dae0;
+}
+.inputCeil:focus {
+  outline: 3px solid hsla(0, 0%, 100%, 0.05);
+}
+.inputCeil:focus ~ .form-did-floating-label {
+  top: -17px;
+  font-size: 0.55rem;
+}
+
+.inputCeil:not(:placeholder-shown) ~ .form-did-floating-label {
+  top: -17px;
+  font-size: 0.55rem;
+}
+
+.checkbox-wrapper-2 .ikxBAC {
+  appearance: none;
+  background-color: rgba(223, 225, 228, 0.23);
+  border-radius: 72px;
+  border-style: none;
+  flex-shrink: 0;
+  height: 20px;
+  position: relative;
+  width: 30px;
+}
+
+.checkbox-wrapper-2 .ikxBAC::before {
+  bottom: -6px;
+  content: "";
+  left: -6px;
+  position: absolute;
+  right: -6px;
+  top: -6px;
+}
+
+.checkbox-wrapper-2 .ikxBAC,
+.checkbox-wrapper-2 .ikxBAC::after {
+  transition: all 100ms ease-out;
+}
+
+.checkbox-wrapper-2 .ikxBAC::after {
+  background-color: #fff;
+  border-radius: 50%;
+  content: "";
+  height: 14px;
+  left: 3px;
+  position: absolute;
+  top: 3px;
+  width: 14px;
+}
+
+.checkbox-wrapper-2 input[type=checkbox] {
+  cursor: default;
+}
+
+.checkbox-wrapper-2 .ikxBAC:hover {
+  background-color: rgba(223, 225, 228, 0.23);
+  transition-duration: 0s;
+}
+
+.checkbox-wrapper-2 .ikxBAC:checked {
+  background-color: #6e79d6;
+}
+
+.checkbox-wrapper-2 .ikxBAC:checked::after {
+  background-color: #fff;
+  left: 13px;
+}
+
+.checkbox-wrapper-2 :focus:not(.focus-visible) {
+  outline: 0;
+}
+
+.checkbox-wrapper-2 .ikxBAC:checked:hover {
+  background-color: #535db3;
+}
+
+.inputForm--shake {
+  animation: 0.3s shake linear;
+}
+
+.loginBox-formBox_form-forgetPassword {
+  position: relative;
+  width: 100px;
+  height: 10px;
+  display: flex;
+  justify-content: center;
+}
+.loginBox-formBox_form-forgetPassword .loginBox-formBox_form-link_forget {
+  color: #d6dae0;
+  font-size: 0.55rem;
+  text-decoration: none;
+  position: absolute;
+  top: -10px;
+  display: none;
+}
+
+.loginBox-formBox_form-submitButton {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+.loginBox-formBox_form-submitButton .login-or {
+  margin: 5px 0;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+.loginBox-formBox_form-submitButton .login-or span {
+  color: #d6dae0;
+  font-size: 0.55rem;
+  width: 100%;
+  text-align: center;
+}
+.loginBox-formBox_form-submitButton .login-or span:before, .loginBox-formBox_form-submitButton .login-or span:after {
+  content: "";
+  display: inline-block;
+  width: 20%;
+  height: 1px;
+  background: #d6dae0;
+  vertical-align: middle;
+  margin: 0 5px;
+}
+
+/*# sourceMappingURL=style.css.map */

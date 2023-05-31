@@ -1,0 +1,167 @@
+@import 'variable';
+@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;600&family=Poppins:wght@300;400;600;700;800&display=swap');
+
+
+// contest-nav-bar.module.scss
+
+.navbar {
+  width: 100%;
+  height: 70px;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  grid-area: nav;
+  position: sticky;
+  top:0;
+
+  .navbar_Content {
+    position: absolute;
+    top: 20px;
+    z-index: 1;
+    display: grid;
+    box-sizing: border-box;
+    grid-template-columns: 20% auto 20%;
+    box-shadow: rgba(0, 0, 0, 0.2) 0px 0px 10px;
+    width: 90%;
+    border-radius: 12px;
+    min-height: 65px;
+
+    &::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 90%;
+      min-height: 65px;
+      filter: blur(10px);
+      z-index: -1;
+    }
+
+    .navbar_info {
+      display: flex;
+      flex-direction: row;
+      gap: 10px;
+      align-items: center;
+      margin-left: 5%;
+
+      &::after {
+        margin-left: 5px;
+        content: '';
+        width: 2px;
+        height: 40px;
+        background: $color-user-point;
+      }
+
+      .navbar_info_avatar {
+        height: 35px;
+        width: 35px;
+        border-radius: 50%;
+        box-shadow: 0 2px 4px 0 rgba(158, 158, 158, 0),
+        0 2px 15px 0 rgba(0, 0, 0, 0.06);
+      }
+
+      .navbar_info_user {
+        display: flex;
+        flex-direction: column;
+      }
+
+      .navbar_info_user_name{
+        font-family: $font-family;
+        font-size: 0.6rem;
+        color: $navBar-name-color;
+        font-weight: bold;
+        line-height: 1.6;
+      }
+
+      .navbar_info_user_point {
+        font-size: 0.8rem;
+        font-weight: 600;
+        color: $color-user-point;
+        display: flex;
+        align-items: center;
+        gap: 2px;
+
+        &::after {
+          content: 'điểm';
+          font-size: 0.6rem;
+        }
+      }
+    }
+
+    .navbar_button {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 10px;
+      padding: 0 20px;
+
+      .actived_button {
+        background: $_button-color;
+        border: $_button-color 2px solid !important;
+        color: #ffffff;
+      }
+
+      .actived_button_text {
+        color: #ffffff !important;
+
+        &:hover,
+        &:active {
+          color: $_button-color-on-hover !important;
+        }
+      }
+
+      .navbar_button_content_button {
+        min-height: 35px;
+        max-height: 40px;
+        min-width: 35px;
+        max-width: 100px;
+        border: $_button-color 1.5px solid;
+        border-radius: 10px;
+        display: grid;
+        place-items: center;
+        cursor: pointer;
+
+        &:hover {
+          border: $_button-color-on-hover 1.5px solid;
+        }
+
+        span {
+          font-size: 0.7rem;
+          color: $_button-color;
+          font-family: $font-family;
+        }
+      }
+    }
+
+    .navbar_button_clock {
+      display: flex;
+      flex-direction: row;
+      justify-content: flex-end;
+      align-self: center;
+      height: 90%;
+
+      .navbar_button_clock_box {
+        background: transparent;
+        border-radius: 15px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        min-width: 100px;
+        height: 100%;
+        margin-right: 10%;
+
+        span {
+          font-size: 0.7rem;
+          color: $color-user-point;
+          font-family: 'Orbitron', sans-serif;
+        }
+      }
+    }
+  }
+}
+

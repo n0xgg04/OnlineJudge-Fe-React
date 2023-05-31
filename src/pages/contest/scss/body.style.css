@@ -1,0 +1,66 @@
+@keyframes animateBG {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+@keyframes rotate-infinity {
+  50% {
+    transform: rotate(180deg);
+  }
+}
+@keyframes zoomInOut-infinity {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.5);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+.main-container {
+  color: #ffffff;
+  font-size: 0.6rem;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+  animation: animateBG 10s ease infinite;
+  background: linear-gradient(-45deg, rgb(6, 10, 61) 0%, rgb(66, 48, 170) 25%, rgb(6, 10, 61) 51%, rgb(66, 48, 170) 100%);
+  background-size: 300% 300%;
+}
+
+.anim-icon-poly_st {
+  position: fixed;
+  top: 30%;
+  left: 20%;
+  z-index: -1;
+  animation: rotate-infinity 15s ease-in infinite;
+}
+
+.anim-icon-plus {
+  position: fixed;
+  top: 70%;
+  left: 80%;
+  z-index: -1;
+  animation: rotate-infinity 15s ease-in infinite;
+}
+
+.anim-icon-round {
+  position: fixed;
+  top: 45%;
+  left: 90%;
+  z-index: -1;
+  animation: zoomInOut-infinity 15s ease-in infinite;
+}
+
+/*# sourceMappingURL=body.style.css.map */

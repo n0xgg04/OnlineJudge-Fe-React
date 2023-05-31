@@ -1,0 +1,143 @@
+@charset "UTF-8";
+@import url("https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;600&family=Poppins:wght@300;400;600;700;800&display=swap");
+.navbar {
+  width: 100%;
+  height: 70px;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  grid-area: nav;
+  position: sticky;
+  top: 0;
+}
+.navbar .navbar_Content {
+  position: absolute;
+  top: 20px;
+  z-index: 1;
+  display: grid;
+  box-sizing: border-box;
+  grid-template-columns: 20% auto 20%;
+  box-shadow: rgba(0, 0, 0, 0.2) 0px 0px 10px;
+  width: 90%;
+  border-radius: 12px;
+  min-height: 65px;
+}
+.navbar .navbar_Content::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 90%;
+  min-height: 65px;
+  filter: blur(10px);
+  z-index: -1;
+}
+.navbar .navbar_Content .navbar_info {
+  display: flex;
+  flex-direction: row;
+  gap: 10px;
+  align-items: center;
+  margin-left: 5%;
+}
+.navbar .navbar_Content .navbar_info::after {
+  margin-left: 5px;
+  content: "";
+  width: 2px;
+  height: 40px;
+  background: #c0c0c0;
+}
+.navbar .navbar_Content .navbar_info .navbar_info_avatar {
+  height: 35px;
+  width: 35px;
+  border-radius: 50%;
+  box-shadow: 0 2px 4px 0 rgba(158, 158, 158, 0), 0 2px 15px 0 rgba(0, 0, 0, 0.06);
+}
+.navbar .navbar_Content .navbar_info .navbar_info_user {
+  display: flex;
+  flex-direction: column;
+}
+.navbar .navbar_Content .navbar_info .navbar_info_user_name {
+  font-family: "Poppins", sans-serif;
+  font-size: 0.6rem;
+  color: #84a2ee;
+  font-weight: bold;
+  line-height: 1.6;
+}
+.navbar .navbar_Content .navbar_info .navbar_info_user_point {
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: #c0c0c0;
+  display: flex;
+  align-items: center;
+  gap: 2px;
+}
+.navbar .navbar_Content .navbar_info .navbar_info_user_point::after {
+  content: "điểm";
+  font-size: 0.6rem;
+}
+.navbar .navbar_Content .navbar_button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 10px;
+  padding: 0 20px;
+}
+.navbar .navbar_Content .navbar_button .actived_button {
+  background: #4230aa;
+  border: #4230aa 2px solid !important;
+  color: #ffffff;
+}
+.navbar .navbar_Content .navbar_button .actived_button_text {
+  color: #ffffff !important;
+}
+.navbar .navbar_Content .navbar_button .actived_button_text:hover, .navbar .navbar_Content .navbar_button .actived_button_text:active {
+  color: #6d5dcb !important;
+}
+.navbar .navbar_Content .navbar_button .navbar_button_content_button {
+  min-height: 35px;
+  max-height: 40px;
+  min-width: 35px;
+  max-width: 100px;
+  border: #4230aa 1.5px solid;
+  border-radius: 10px;
+  display: grid;
+  place-items: center;
+  cursor: pointer;
+}
+.navbar .navbar_Content .navbar_button .navbar_button_content_button:hover {
+  border: #6d5dcb 1.5px solid;
+}
+.navbar .navbar_Content .navbar_button .navbar_button_content_button span {
+  font-size: 0.7rem;
+  color: #4230aa;
+  font-family: "Poppins", sans-serif;
+}
+.navbar .navbar_Content .navbar_button_clock {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+  align-self: center;
+  height: 90%;
+}
+.navbar .navbar_Content .navbar_button_clock .navbar_button_clock_box {
+  background: transparent;
+  border-radius: 15px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 100px;
+  height: 100%;
+  margin-right: 10%;
+}
+.navbar .navbar_Content .navbar_button_clock .navbar_button_clock_box span {
+  font-size: 0.7rem;
+  color: #c0c0c0;
+  font-family: "Orbitron", sans-serif;
+}
+
+/*# sourceMappingURL=contestNavBar.module.css.map */

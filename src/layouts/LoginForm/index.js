@@ -1,92 +1,138 @@
 import './scss/style.scss';
-import { useCallback, useEffect, useRef, useState } from 'react';
-import ToastContainer, { toast } from '../../components/toast';
+import React, { useCallback, useEffect, useRef, useState } from 'react';
 import logo from '../../assets/images/logo.png';
+
+// eslint-disable-next-line
 import config from '../../config';
 import Loading from '../../components/loading';
+import LoginByGoogle from "../../components/login-by-google";
+import axios from "axios";
+import toast from "react-hot-toast";
+import BoxJoin from "../../components/box-join-contest"
 
-export default function LoginForm() {
+export default React.memo(function() {
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
     const [saveSession, setSaveSession] = useState(false);
 
     const inputUsername = useRef(null);
     const inputPassword = useRef(null);
-    const [isLoading, setIsLoading] = useState(false);
+    const [isLoading, setIsLoading] = useState(true);
+    const loginBoxRef = useRef(null);
+    const [showBoxJoinContest, setShowBoxJoinContest] = useState(false);
 
-    useEffect(() => {
-        setIsLoading(false);
-    }, []);
 
     const shakeInput = useCallback((ref) => {
         ref.current.focus();
-        ref.current.classList.add('inputForm--shake');
+        ref.current?.classList?.add('inputForm--shake');
         setTimeout(() => {
-            ref.current.classList.remove('inputForm--shake');
+            ref.current?.classList?.remove('inputForm--shake');
         }, 500);
     }, []);
 
-    const sendLogin = () => {
-        toast('Đăng nhập thành công', 'Đăng nhập', 3000);
-        const validate = () => {
-            if (username === '') {
-                shakeInput(inputUsername);
-                return false;
+    const notify = useCallback((text, duration = 4000, icon = '😡') => {
+        toast(text, {
+            duration: duration,
+            position: 'top-right',
+            style: {
+                padding: '16px',
+                color: '#ffffff',
+                background: "hsla(0,0%,100%,.2)",
+                border: "2px solid hsla(0,0%,100%,.1)",
+                fontSize: "0.63rem",
+                width: "auto",
+                zIndex: 99999,
+            },
+            icon: icon,
+            iconTheme: {
+                primary: '#000',
+                secondary: '#fff',
             }
+        })
+    },[]);
 
-            if (password === '') {
-                shakeInput(inputPassword);
-                return false;
-            }
+    const validate = () => {
+        if (username === '') {
+            shakeInput(inputUsername);
+            return false;
+        }
 
-            return true;
-        };
+        if (password === '') {
+            shakeInput(inputPassword);
+            return false;
+        }
 
+        return true;
+    };
+
+    const sendLogin = useCallback(() => {
         if (!validate()) return;
 
         setIsLoading(true);
 
-        fetch(`${config.api}/api/auth/login`, {
-            method: 'POST',
+        axios.post(`${config.api}/api/auth/login`, {
+            username: username,
+            password: password,
+            saveSession: saveSession,
+        }, {
             headers: {
-                'Content-Type': 'application/json',
-                'Access-Control-Allow-Origin': 'true',
-            },
-            body: JSON.stringify({
-                username: username,
-                password: password,
-                saveSession: saveSession,
-            }),
-            credentials: 'include',
-        })
-            .then((response) => {
-                if (response.ok) {
-                    return response.json();
-                } else {
-                    throw new Error('Network response was not ok');
+                'Access-Control-Allow-Origin': '*', // Allow requests from any origin
+                'Access-Control-Allow-Headers': 'Content-Type, Authorization', // Specify the allowed headers
+            }
+        }).then((response) => {
+            if (response.data.status === 'success') {
+                notify('Đăng nhập thành công');
+                localStorage.setItem('token', response.data.token);
+
+                if(response.data.joinedContest === null) {
+                    //!Show box
+                    setShowBoxJoinContest(true);
+                }else{
+                    window.location.href = `/contest/${response.data.joinedContest}`;
                 }
-            })
-            .then((data) => {
-                console.log(data);
-            })
-            .catch((error) => {
-                console.log(`=> ${config.api}/api/auth/login ${error}`);
-            })
-            .finally(() => {
+
+            }else{
+                notify("Tên đăng nhập hoặc mật khẩu không chính xác!")
+                console.log(response.data)
+            }}).catch((error) => {
+            console.log(error);
+        }).finally(() => {
+            setIsLoading(false);
+        })
+         // eslint-disable-next-line
+    },[username, password, saveSession, validate, shakeInput, notify, shakeInput]);
+
+    //enter to login
+    const handleKeyDown = useCallback((e) => {
+        if (e.key === 'Enter') {
+            sendLogin();
+        }
+    }, [sendLogin]);
+
+    useEffect(() => {
+        window.addEventListener("load", function () {
+            setIsLoading(false);
+        })
+
+        window.addEventListener("keydown", handleKeyDown)
+
+        return () => {
+            window.removeEventListener("load", function () {
                 setIsLoading(false);
-            });
-    };
+            })
+            window.removeEventListener("keydown", handleKeyDown)
+        }
+    }, [handleKeyDown]);
+
+
+
+
 
     return (
         <>
             {isLoading && <Loading />}
-            <div className="loginBox">
-                <ToastContainer
-                    title="Đăng nhập"
-                    message="Đăng nhập thành công"
-                    show={true}
-                    setShow={() => {}}
-                />
+            {showBoxJoinContest && <BoxJoin notify={notify}/>}
+            <div ref={loginBoxRef} className="loginBox">
                 <div className="glassBox loginBox-formBox">
                     <div className="loginBox-formBox_heading">
                         <img className="loginBox-formBox_heading--logo" src={logo} alt="Logo" />
@@ -149,10 +195,14 @@ export default function LoginForm() {
                             <button onClick={sendLogin} className="loginBox-formBox_form-btn" id="submit">
                                 Đăng nhập
                             </button>
+                            <div className="login-or">
+                                <span>hoặc</span>
+                            </div>
+                            <LoginByGoogle />
                         </div>
                         <div className="loginBox-formBox_form-forgetPassword">
                             <a
-                                href="#"
+                                href="/"
                                 className="loginBox-formBox_form-link_forget"
                                 onClick={(e) => {
                                     e.preventDefault();
@@ -167,4 +217,4 @@ export default function LoginForm() {
             </div>
         </>
     );
-}
+})

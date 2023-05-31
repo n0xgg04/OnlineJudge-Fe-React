@@ -6,10 +6,16 @@ import MainBox from "../../components/main-box"
 import NavigationBar from '../../components/navigation/index.js'
 import Body from '../../layouts/BodyPage'
 import Loading from '../../components/loading'
+import WaitingToStart from '../../layouts/waitingStart/'
 import './scss/styles.scss'
-
+import { useParams } from 'react-router-dom';
 import config from '../../config/index'
+import ScrollBtn from "../../components/btnScrollToEditor";
+import moment from "moment";
 
+const ContestContext = React.createContext({
+
+});
 export const ContestDataContext = React.createContext(// 20230512193533
 // http://localhost:3001/problems
 
@@ -42,22 +48,71 @@ export const ContestDataContext = React.createContext(// 20230512193533
             }
         }
     ]);
+
+//!Contest ID context
+
 export default function ContestPage(){
     const [contestData, setContestData] = useState([]);
+    const [contestStatus, setContestStatus] = useState({
+        status: false,
+        startAt : null,
+        endAt: null,
+    });
+
+    // eslint-disable-next-line
+    const [isLoading, setIsLoading] = useState(true);
+    const {contestId} = useParams();
+    const userToken = localStorage.getItem("token");
+    let startAtRef = React.useRef(null);
+
 
     //!Fetch contest data
     useEffect(() => {
-        axios.get(`${config.api}/problems`)
+        window.addEventListener("load", function () {
+            setIsLoading(false);
+        })
+        console.log(userToken)
+
+        axios.post(`${config.api.replaceAll("3001","1234")}/api/contestInfo/${contestId}`,{
+            token: userToken
+        },{
+            headers: {
+                'Authorization' : 'Bearer ' + userToken,
+            }
+        })
             .then(response => {
-                setContestData(response.data);
+                let proObj = JSON.parse(response.data?.problemList)
+                let startAt = moment(response.data.startAt, 'YYYY-MM-DD HH:mm:ss').toDate();
+                let endAt = moment(response.data.endAt, 'YYYY-MM-DD HH:mm:ss').toDate();
+                if (startAt > new Date()) {
+                    setContestStatus({
+                        startAt : startAt,
+                        endAt: endAt,
+                        status: true,
+                    });
+
+                    startAtRef.current = startAt;
+                    console.log("contest start at ", startAt)
+                } else {
+                    setContestStatus({
+                        startAt : startAt,
+                        endAt: endAt,
+                        status: false,
+                    })
+                    setContestData(proObj)
+                }
             })
             .catch(error => {
                 console.error('Error fetching data:', error);
             });
-    },[])
 
+        return () => {
+            window.removeEventListener("load", function () {
+                setIsLoading(false);
+            })
+        }
+    },[contestId,userToken])
 
-    console.log(contestData)
     return (
         <>
             <Helmet>
@@ -82,14 +137,34 @@ export default function ContestPage(){
                       content="https://code.itptit.com/assets/images/club-logo.jpeg"/>
             </Helmet>
             <Body>
-                <ContestDataContext.Provider value={contestData}>
-                     <NavigationBar contestData={contestData} contestId={1} inContest={true}/>
-                    {contestData.length === 0 && <Loading/>}
-                     <MainBox contestData={contestData}>
-                     </MainBox>
-                </ContestDataContext.Provider>
-            </Body>
+                <ContestContext.Provider value={{
+                    contestId: contestId,
+                    startAt : contestStatus.startAt,
+                    endAt : contestStatus.endAt
+                }}>
 
+                {contestStatus.status ? <WaitingToStart /> :
+                    <>
+                        <ContestDataContext.Provider value={contestData}>
+                            {contestData.length === 0 && <Loading/>}
+                            {contestData['startAt']}
+                            <div className="contestLayout">
+                                {contestData.length !== 0 && (
+                                    <>
+                                         <NavigationBar contestData={contestData} contestId={1} inContest={true}/>
+                                        {/* eslint-disable-next-line no-mixed-operators */}
+                                         <MainBox contestData={contestData}>
+                                         </MainBox>
+                                         <ScrollBtn/>
+                                    </>)}
+                            </div>
+                        </ContestDataContext.Provider>
+                    </>
+                }
+                </ContestContext.Provider>
+            </Body>
         </>
     )
 }
+
+export {ContestContext}

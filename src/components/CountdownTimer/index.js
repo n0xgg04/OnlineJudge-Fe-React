@@ -5,9 +5,11 @@ export default function CountdownTimer({ startAt, endAt }) {
     const [timeLeft, setTimeLeft] = useState(calculateTimeLeft(endAt));
 
     useEffect(() => {
-        const timer = setInterval(() => {
+        let timer = null;
+
+        timer = setInterval(() => {
             setTimeLeft(calculateTimeLeft(endAt));
-        }, 1000);
+        }, 1000)
 
         return () => clearInterval(timer);
         // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -43,7 +45,7 @@ export default function CountdownTimer({ startAt, endAt }) {
             <ProgressBar percent={timeLeft.percent} />
             <div>
                 {timeLeft !== false ? (
-                    <span>
+                    <span id="timeLeft">
             {timeLeft.days !== "0" && timeLeft.days + " days, "}{timeLeft.hours}:{timeLeft.minutes}:{timeLeft.seconds}
           </span>
                 ) : (
