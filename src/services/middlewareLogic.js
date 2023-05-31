@@ -1,8 +1,17 @@
+import {Navigate} from "react-router-dom";
+
 export default function UseMiddleware({ middleware, children }) {
-    const result = middleware("",() => {
-        console.log("Middleware passed");
+    return middleware(Navigate, () => {
         return <>{children}</>;
     });
-
-    return result;
 }
+
+const withMiddleware = (middleware, component) => {
+    return (props) => {
+        return middleware(Navigate, () => {
+            return component(props);
+        });
+    }
+}
+
+export {withMiddleware};

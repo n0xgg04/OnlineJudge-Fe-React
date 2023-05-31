@@ -1,7 +1,7 @@
-import './scss/progressbar.scss'
+import progressStyle from './scss/progressbar.module.scss'
 export default function ProgressBar({percent}){
     return (
-        <div className="progressBar" style={{
+        <div className={progressStyle.progressBar} style={{
             "--progress-value" : percent+"%"
         }}>
         </div>
